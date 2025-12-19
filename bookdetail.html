@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <title>Document</title>
+    <style>
+    .tooltip::before {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                    'Segoe UI', Roboto, 'Helvetica Neue',
+                    Arial, sans-serif;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+</style>
+</head>
+<body class="box-border m-0 p-0">
+    <nav class="navbar bg-base-100 fixed top-0 left-0 w-full right-0 z-50 shadow-md flex flex-col gap-2 ">
+        <div class="flex justify-around w-full">
+            <!-- mobile view -->
+            <div class="navbar-start gap-1 flex max-sm:flex-col max-sm:items-start">
+                <div class="flex items-center gap-2">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost xl:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                        </div>
+                        <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            <li class="rounded-3xl cursor-pointer font-semibold"><a>Giới Thiệu</a></li>
+                            <li class="rounded-3xl  cursor-pointer font-semibold"><a>Danh Mục</a></li>
+                            <li class="rounded-3xl cursor-pointer font-semibold"><a>Hướng Dẫn</a></li>
+                            <li class="rounded-3xl  cursor-pointer font-semibold"><a>Sự Kiện</a></li>
+                            <li class="rounded-3xl  cursor-pointer font-semibold"><a>Khuyến Đọc</a></li>
+                            <li class="rounded-3xl  cursor-pointer font-semibold"><a>Liên Hệ</a></li>
+                            <li>
+                                <a class="font-semibold">Ebook</a>
+                                <ul class="p-2 bg-base-100 w-40 z-1">
+                                    <li><a>Tất Cả</a></li>
+                                    <li><a>Thể Loại</a></li>
+                                </ul>
+                            </li>
+                        </ul> 
+                    </div>
+                <a><span class="icon-fire ml-5"></span></a>
+                <a class=" text-xl font-bold max-lg:hidden">
+                    Thư Viện Dòng Tên
+                </a>
+            </div>
+        </div>
+        <!-- desktop view -->
+        <div class="navbar-center hidden xl:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li class="rounded-3xl cursor-pointer font-semibold"><a>Giới Thiệu</a></li>
+                <li class="rounded-3xl  cursor-pointer font-semibold"><a>Danh Mục</a></li>
+                <li class="rounded-3xl cursor-pointer font-semibold"><a>Hướng Dẫn</a></li>
+                <li class="rounded-3xl  cursor-pointer font-semibold"><a>Sự Kiện</a></li>
+                <li class="rounded-3xl  cursor-pointer font-semibold"><a>Khuyến Đọc</a></li>
+                <li class="rounded-3xl  cursor-pointer font-semibold"><a>Liên Hệ</a></li>
+                <li class="rounded-3xl  cursor-pointer font-semibold dropdown dropdown-btn" id="ebook_hover">
+                    <div tabindex="0" role="button" class="flex items-center gap-1" >
+                        <a >Ebook</a>
+                        <span class="material-symbols-outlined" >
+                            arrow_drop_down
+                        </span>
+                    </div>
+                    <ul tabindex="-1" class="dropdown-content mt-10 menu bg-base-100 rounded-box z-1 w-52 p-1 shadow-md border border-gray-200">
+                        <li><a>Tất Cả</a></li>
+                        <li><a>Thể Loại</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <input type="text" placeholder="Tìm tên sách, tác giả..." class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none w-[300px] max-lg:hidden">
+        </div>
+        <!-- Login btn -->
+        <div class="navbar-end">
+            <a class="btn">Đăng Nhập</a>
+        </div>
+    </div>
+    <!-- Input for mobile view -->
+    <input type="text" placeholder="Tìm tên sách, tác giả..." class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none w-[300px] hidden max-lg:block max-lg:w-full">
+    </nav>
+     <section class="shadow-md mt-20 pb-8 pt-[calc(80px-68px)] flex justify-center items-center gap-4 max-lg:flex-col max-lg:pt-14">
+        <img src="https://img.wattpad.com/cover/13369334-256-k338225.jpg" alt="cover_poster" class="rounded-lg bg-cover w-[200px] h-[300px]"/>
+        <div class="w-[350px] flex flex-col justify-center items-center p-2 gap-4 max-sm:w-[250px]">
+            <h2 class="font-bold text-3xl w-full">
+                Anne of Green Gables (1908)
+            </h2>
+            <div class="w-full flex">
+                <button class="bg-[#121212] text-white px-4 py-2 rounded-l-3xl w-3/4 cursor-pointer font-bold hover:opacity-80">Đặt Mượn</button>
+                <button class="bg-white px-4 py-2 rounded-r-3xl w-1/4 border-2 cursor-pointer border-[#F39EB6] tooltip tooltip-bottom
+                flex justify-center items-center text-[#F39EB6] hover:bg-[#F39EB6]/10 transition-colors duration-300"
+                 data-tip="Thêm vào danh sách yêu thích">
+                    <span class="material-symbols-outlined">
+                        favorite
+                    </span>
+                </button>
+            </div>
+        </div>
+    </section>
+        
+     <section class="flex  items-start pb-20 px-60 pt-10 w-full gap-6 max-2xl:flex-col max-2xl:px-30 max-2xl:gap-10 max-sm:px-4">
+        <div class="flex flex-col gap-4  max-2xl:w-full">
+            <h3 class="font-bold mb-4">Trích Dẫn</h3>
+            <p onclick="copyText(this)" class="cursor-pointer select-none tooltip tooltip-bottom" data-tip="Nhấp để sao chép">
+                Whitehead, Alfred North. Science and the Modern World. New York: The Free Press, 1925.
+            </p>
+        
+        <div class="rounded-lg bg-white border border-gray-100 shadow-xl w-full p-2">
+            <h3 class="font-bold mb-4">Thông Tin Sách</h3>
+            <ul class="flex flex-col gap-2 ">
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                            info_i
+                        </span>
+                        Tựa Đề
+                    </span>
+                    <p>SCIENCE AND THE MODERN WORLD</p>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        more_horiz
+                        </span>
+                        Mã Sách
+                    </span>
+                    <p>45141</p>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        bookmark
+                        </span>
+                        DDC</span>
+                    <a href="#">190</a>
+                </li>
+                 <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        sell
+                        </span>
+                        Phân Loại
+                    </span>
+                    <a href="#">Modern Western Philosophy</a>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        barcode
+                        </span>
+                        ISBN-10
+                    </span>
+                    <p>0684836394</p>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        barcode
+                        </span>
+                        ISBN-13</span>
+                    <p>9780684836393</p>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        tag
+                        </span>
+                        Từ Khóa
+                    </span>
+                    <p></p>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        public
+                        </span>
+                        Ngôn Ngữ
+                    </span>
+                    <p>Tiếng Anh</p>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        auto_stories
+                        </span>
+                        Số Trang
+                    </span>
+                    <p>210</p>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        group
+                        </span>
+                        Tác Giả
+                    </span>
+                    <a>ALFRED NORTH WHITEHEAD</a>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                         <span class="material-symbols-outlined">
+                        group
+                        </span>
+                        Dịch Giả
+                    </span>
+                    <a></a>
+                </li>
+                 <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        post
+                        </span>
+                        N. Xuất Bản
+                    </span>
+                    <p>THE FREE PRESS</p>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        location_on
+                        </span>
+                        Tại
+                    </span>
+                    <p>NEW YORK</p>
+                </li>
+                <li class="flex gap-3 justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                        calendar_month
+                        </span>
+                        Năm
+                    </span>
+                    <p>1925</p>
+                </li>
+            </ul>
+        </div>
+        </div>
+        <div class="flex flex-col gap-4  w-full bg-white p-4 rounded-lg border border-gray-100 shadow-xl max-2xl:w-full">
+            <h3 class="font-bold mb-4">Sách Cùng Thể Loại</h3>
+            <ul class=" w-full overflow-y-scroll max-h-[600px] h-fit grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))]   max-sm:grid-cols-2 gap-4 pr-4 overflow-x-hidden">
+                <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-2">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 py-1 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-2">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 py-1 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            
+            <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-2">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 py-1 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-2">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 py-1 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-1">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            
+            </ul>
+            <button id="loadMoreBtn" class="bg-white text-[#7F1E15] border border-[#7F1E15]/50 h-[40px] px-4 py-2 rounded-lg w-full cursor-pointer font-semibold hover:bg-[#7F1E15]/80
+            hover:border-[#7F1E15] hover:text-white transition-colors duration-300">
+                Xem Thêm</button>
+        </div>
+     </section>
+     <!-- author books -->
+    <section class="pb-20 px-60 max-2xl:px-30 max-sm:px-4">
+         <div class="flex flex-col gap-4 w-full">
+        <div class="flex flex-col gap-4  w-full bg-white p-4 rounded-lg border border-gray-100 shadow-xl">
+            <h3 class="font-bold mb-4">Sách Cùng Tác Giả</h3>
+            <ul class=" w-full   grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-4  max-sm:grid-cols-2">
+                <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-1">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg max-sm:h-[220px]"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-1">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-1">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-1">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-1">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-1">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            <li class="w-full">
+                <div class=" rounded-lg flex flex-col w-full text-white  relative gap-1">
+                    <img src="https://img.wattpad.com/cover/402659967-256-k650601.jpg" alt="..." class="w-full h-[220px] rounded-lg"/>
+                    <div class="absolute top-0 left-0 right-0 cursor-pointer bg-white/30 flex flex-col  items-end p-2 h-[220px] opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg gap-4">
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer " data-tip="Gửi Email">
+                            mark_email_read
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Chia Sẻ">
+                            share
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Yêu Cầu Scan">
+                        adf_scanner
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Trích Dẫn">
+                        comment
+                        </span>
+                        <span class="material-symbols-outlined tooltip  tooltip-bottom cursor-pointer" data-tip="Sao Chép Link">
+                        link
+                        </span>
+                    </div>
+                    <div class="absolute top-0 left-0 text-white bg-gradient-to-l from-[#59AC77] to-[#3A7D44] rounded-tl-lg rounded-br-lg  px-2 py-1 flex items-center justify-center">
+                        <span class="text-[10px] font-bold">Có Thể Mượn</span>
+                    </div>
+                    <a class=" text-black text-center w-fit   px-2 text-[10px] font-bold cursor-pointer ">
+                        <span class="text-wrap w-fit line-clamp-2 text-ellipsis truncate">ETHICS AS FIRST PHILOSOPHY</span>
+                    </a>
+                    <span class="text-gray-500 text-[10px] px-3 cursor-pointer text-center">ADRIAAN T. PEPERZAK</span>
+                </div>
+            </li>
+            </ul>
+            <button id="loadMoreBtn" class="bg-white text-[#7F1E15] border border-[#7F1E15]/50 px-4 py-2 rounded-lg w-full cursor-pointer font-semibold hover:bg-[#7F1E15]/80
+            hover:border-[#7F1E15] hover:text-white transition-colors duration-300">
+                Xem Thêm</button>
+        </div>
+    </section>
+    <!-- footer -->
+     <footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-5">
+  <nav class="flex gap-2 flex-col">
+    <h6 class="footer-title">CHÍNH SÁCH</h6>
+    <a class="flex gap-2 items-center group hover:opacity-80 transition-opacity duration-300 cursor-pointer">
+        <span class="material-symbols-outlined group-hover:opacity-80">
+            line_end_arrow_notch
+            </span>
+            Nội Quy</a>
+    <a class=" flex gap-2 items-center group hover:opacity-80 transition-opacity duration-300 cursor-pointer">
+        <span class="material-symbols-outlined group-hover:opacity-80">
+            line_end_arrow_notch
+            </span>Đăng Ký Thành Viên</a>
+    <a class=" flex gap-2 items-center group hover:opacity-80 transition-opacity duration-300 cursor-pointer">
+        <span class="material-symbols-outlined group-hover:opacity-80">
+            line_end_arrow_notch
+            </span>Bảo Mật Thông Tin</a>
+    <div class=" flex gap-2 flex-col">
+        <p class="flex items-center gap-1"> <span class="material-symbols-outlined">
+            alarm_on
+            </span>
+            Giờ Làm Việc:
+        </p>
+        <p class="ml-8 flex gap-2 items-center">
+           
+            Thứ 2 đến Hết Sáng Thứ 7</p>
+        <p class="ml-8 flex gap-2 items-center">
+            
+            Sáng: 7h45- 11h30
+        </p>
+        <p class="ml-8 flex gap-2 items-center">
+           
+            Chiều: 13h30 - 16h45
+        </p>
+    </div>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Liên Lạc</h6>
+    <a class="">
+        Kết Nối Với Chúng Tôi
+    </a>
+    <a class="flex items-center gap-2 cursor-pointer group hover:opacity-80 transition-opacity duration-300">
+        <span class="material-symbols-outlined group-hover:opacity-80">
+            line_end_arrow_notch
+            </span>
+        Học Viện Thánh Giuse</a>
+    <a class=" flex items-center gap-2 cursor-pointer group hover:opacity-80 transition-opacity duration-300">
+        <span class="material-symbols-outlined group-hover:opacity-80">
+            line_end_arrow_notch
+            </span>
+            Dòng Tên - Dòng Chúa Giêsu</a>
+    <a class="flex items-center gap-2 cursor-pointer group hover:opacity-80 transition-opacity duration-300">
+        <span class="material-symbols-outlined group-hover:opacity-80">
+            line_end_arrow_notch
+            </span>Hợp Tuyển Thần Học</a>
+  </nav>
+  <p class="flex " ><a href="https://dongten.net/" target="_blank" rel="noopener noreferrer">© SJVN </a><span id="current_year"></span></p>
+</footer>
+</body>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Slick JS -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="index.js"></script>
+</html>
